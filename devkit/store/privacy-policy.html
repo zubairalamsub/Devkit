@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevKit — Privacy Policy</title>
+  <style>
+    body { font: 16px/1.6 system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #1c2330; }
+    h1 { font-size: 26px; } h2 { font-size: 19px; margin-top: 28px; }
+    @media (prefers-color-scheme: dark) { body { background: #14181f; color: #e6eaf1; } }
+  </style>
+</head>
+<body>
+  <h1>DevKit — Privacy Policy</h1>
+  <p><em>Last updated: 22 July 2026</em></p>
+
+  <h2>The short version</h2>
+  <p><strong>DevKit does not collect, store, transmit or sell any user data. Period.</strong></p>
+
+  <h2>What DevKit does</h2>
+  <p>DevKit is a collection of developer utilities (formatters, converters, generators, page-inspection tools) that run entirely inside your browser. The extension makes <strong>no network requests</strong> of any kind: there are no servers, no analytics, no crash reporting and no third-party services.</p>
+
+  <h2>Data handling</h2>
+  <ul>
+    <li>Text you paste into tools (JSON, tokens, colors, etc.) is processed locally in the popup and is never sent anywhere.</li>
+    <li>On-page tools (ruler, font inspector, SEO audit, storage viewer, screenshot) run only on the tab where you explicitly click a DevKit button, using Chrome's <code>activeTab</code> permission. Results are shown to you and then discarded.</li>
+    <li>Screenshots are saved directly to your device; they are never uploaded.</li>
+    <li>The only things DevKit persists are your theme preference and last-used tool, stored locally via <code>chrome.storage.local</code> on your own machine.</li>
+  </ul>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>activeTab</strong> — grants temporary access to the current tab, only after you click DevKit, so on-page tools can run there.</li>
+    <li><strong>scripting</strong> — injects the on-page tools (overlays, analysis) into that tab on your request.</li>
+    <li><strong>storage</strong> — saves your theme and last-used tool locally.</li>
+  </ul>
+
+  <h2>Changes</h2>
+  <p>If this policy ever changes, the updated version will be published at this URL and the "Last updated" date will change.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <a href="mailto:zubair@bracsaajan.com">zubair@bracsaajan.com</a></p>
+</body>
+</html>
