@@ -85,16 +85,30 @@ Everything runs locally in your browser. No servers, no accounts, no analytics, 
 
 Dark & light themes. Searchable tool list. Keyboard shortcut: Alt+Shift+D.
 
-## Permission justifications (for the "Privacy practices" tab)
+## Privacy practices tab — paste these exactly
 
-- **activeTab** — Lets the user run on-page tools (ruler, font inspector, palette extractor, SEO/performance audit, storage viewer, screenshot) on the tab where they clicked DevKit. Access is granted only on user gesture and only for that tab.
-- **scripting** — Required to inject the on-page overlay tools and the analysis functions into the active tab after the user clicks a tool button.
-- **storage** — Stores the user's theme preference and last-used tool locally. No user or page data is stored.
-- **Remote code** — None. All code ships in the package.
-- **Data collection** — None. The extension makes no network requests.
+### Single purpose description
+DevKit is a developer utility toolbox. Its single purpose is to provide a collection of client-side developer tools — formatters, encoders/decoders, generators, converters, comparison/diff tools, and on-page inspection and analysis — all accessible from the extension's toolbar popup.
 
-## Single-purpose description
-DevKit is a developer utility toolbox: it provides client-side developer tools (formatters, converters, generators, page inspection and page analysis) in the extension popup.
+### Permission justification — activeTab
+activeTab is used only when the user clicks a DevKit tool that acts on the current page (element ruler, font inspector, outline overlay, color-palette extractor, screenshot, SEO audit, performance metrics, storage viewer, tech detector). It grants temporary access to the active tab in response to that explicit click so the tool can read the page the user is looking at. No pages are accessed in the background, and no broad host permissions are requested.
+
+### Permission justification — scripting
+scripting is required to inject DevKit's on-page tools and analysis code into the active tab after the user clicks a tool button. It runs the inspection overlays (ruler, font inspector, outline) and collects page data (meta/SEO tags, performance timings, storage contents, framework detection) to display back to the user. Injection happens only on user action and only in the active tab.
+
+### Permission justification — storage
+storage is used to save the user's preferences locally via chrome.storage.local — specifically the selected theme (light/dark) and the last-used tool, so the popup reopens in the expected state. No user content and no page data are stored, and nothing is transmitted off the device.
+
+### Remote code
+Answer: **No, I am not using remote code.** All JavaScript is bundled in the extension package. DevKit does not load, fetch, or eval any code from remote sources.
+
+### Data usage
+- The extension does **not** collect or use any user data. Leave all data-type checkboxes unchecked (or select "does not collect user data" if offered).
+- Check all three certification statements:
+  1. I do not sell or transfer user data to third parties, outside of the approved use cases.
+  2. I do not use or transfer user data for purposes unrelated to my item's single purpose.
+  3. I do not use or transfer user data to determine creditworthiness or for lending purposes.
+- Then tick the final box certifying compliance with the Developer Program Policies.
 
 ## Screenshot ideas (1280×800 PNG, 3–5 recommended)
 1. JSON formatter with tree view (dark theme)
