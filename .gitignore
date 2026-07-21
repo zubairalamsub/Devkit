@@ -3,6 +3,8 @@
 
 # Local tooling / editor config
 .claude/
+.idea/
+.vscode/
 
 # Dependencies
 node_modules/
