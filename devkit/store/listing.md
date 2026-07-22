@@ -11,77 +11,28 @@ Developer Tools
 
 ## Description
 
-Stop juggling a dozen single-purpose extensions. DevKit packs 45+ essential developer tools into one fast, private popup.
+Stop juggling a dozen single-purpose extensions. DevKit packs 45+ developer tools into one fast, private popup.
 
 ★ CODE & DATA
-• JSON formatter, validator & minifier with a collapsible tree view and error line/column
-• Base64 encode/decode (UTF-8 safe, URL-safe variant)
-• URL encoder/decoder + full URL parser with query-param table
-• JWT decoder with human-readable claims and expiry check
-• HTML entity escape/unescape
-• Number base converter (binary / octal / decimal / hex / any base to 36)
-• CSV ⇄ JSON converter
-• Query string ⇄ JSON converter
-• SQL formatter
-• Markdown preview with live rendering
+JSON formatter with tree view, Base64, URL and HTML-entity encoders, JWT decoder, number-base converter, CSV/JSON and query-string converters, SQL formatter, and Markdown preview.
 
 ★ GENERATORS
-• UUID v4 generator (bulk up to 500)
-• SHA-1 / SHA-256 / SHA-384 / SHA-512 hashes (Web Crypto, computed locally)
-• Secure password generator with entropy meter
-• QR code generator — download or copy as PNG
-• Mock data generator (names, emails, phones, IPs and more)
-• Lorem ipsum (words / sentences / paragraphs)
+UUIDs, SHA hashes, secure passwords, QR codes, mock data, and lorem ipsum.
 
 ★ DESIGN
-• Color converter: HEX ⇄ RGB ⇄ HSL
-• Screen eyedropper — pick any pixel, even outside the browser
-• WCAG contrast checker (AA / AAA, normal & large text)
-• px ⇄ rem calculator with quick-reference table
-• Box-shadow generator with live preview
-• Gradient generator (linear / radial) with live preview
+Color converter, screen eyedropper, WCAG contrast checker, px/rem calculator, and box-shadow & gradient builders — all with live preview.
 
-★ TEXT
-• Regex tester with live match highlighting and capture-group table
-• Case converter: camelCase, PascalCase, snake_case, kebab-case + 6 more
-• Word & character counter with reading time
-• Line tools: sort, dedupe, reverse, shuffle, trim, number
-• Slugify — turn any text into a URL slug
-• String escaper for JS / JSON literals
+★ TEXT & COMPARE
+Regex tester, case converter, word counter, line tools, slugify and string escaper — plus a full compare suite: text diff, JSON diff, list compare, text similarity, date diff, number diff and image diff.
 
-★ COMPARE
-• Text diff — line-by-line, added/removed highlighting
-• JSON diff — structural comparison with paths, added/removed/changed
-• List compare — what's unique to each list and what they share
-• Text similarity — edit distance, similarity % and inline word diff
-• Date/time diff — duration between two dates, breakdown and totals
-• Number diff — difference, percentage change and ratio
-• Image diff — highlight the pixels that differ between two images
+★ TIME & REFERENCE
+Timestamp converter, cron explainer, and quick references for HTTP status codes, MIME types and User-Agent strings.
 
-★ TIME
-• Unix timestamp ⇄ date converter, live epoch clock, relative time
-• Cron expression explainer with the next upcoming run times
-
-★ REFERENCE
-• HTTP status codes (searchable)
-• MIME types by file extension (searchable)
-• User-Agent parser (browser / OS / engine / device)
-
-★ ON-PAGE TOOLS
-• Element ruler — hover any element for size, margin/padding and selector
-• Font inspector — hover text for family, size, weight, line-height, color
-• Outline all elements — depth-tinted layout debugging
-• Palette extractor — every color actually used on the page, click to copy
-• Screenshot the visible tab — download PNG or copy to clipboard
-
-★ PAGE ANALYSIS
-• SEO audit: title/description lengths, OpenGraph & Twitter cards, canonical, H1 count, images missing alt
-• Performance: TTFB, FCP, LCP, CLS, load times, resource breakdown by type
-• Storage viewer: localStorage, sessionStorage and cookies — inspect, delete, clear
-• Tech detector: identify the JavaScript frameworks, libraries and platforms a page is built with
+★ ON-PAGE TOOLS & ANALYSIS
+Element ruler, font inspector, outline overlay, palette extractor and full-tab screenshots. Plus on-demand page analysis: SEO checks, performance metrics, a storage viewer and framework detection.
 
 ★ PRIVATE BY DESIGN
-Everything runs locally in your browser. No servers, no accounts, no analytics, no data collection — and only three narrow permissions (activeTab, scripting, storage). DevKit can only touch a page when you click a button.
+Everything runs locally. No servers, no accounts, no analytics, no data collection — just three narrow permissions (activeTab, scripting, storage). DevKit only touches a page when you click a button.
 
 Dark & light themes. Searchable tool list. Keyboard shortcut: Alt+Shift+D.
 
