@@ -78,7 +78,7 @@ Stop juggling a dozen single-purpose extensions. DevKit packs 45+ essential deve
 • SEO audit: title/description lengths, OpenGraph & Twitter cards, canonical, H1 count, images missing alt
 • Performance: TTFB, FCP, LCP, CLS, load times, resource breakdown by type
 • Storage viewer: localStorage, sessionStorage and cookies — inspect, delete, clear
-• Tech detector: React, Vue, Angular, Next.js, WordPress, Tailwind and more
+• Tech detector: identify the JavaScript frameworks, libraries and platforms a page is built with
 
 ★ PRIVATE BY DESIGN
 Everything runs locally in your browser. No servers, no accounts, no analytics, no data collection — and only three narrow permissions (activeTab, scripting, storage). DevKit can only touch a page when you click a button.
