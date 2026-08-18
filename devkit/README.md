@@ -24,6 +24,8 @@ A Chrome extension (Manifest V3) bundling 45+ developer tools into one popup. 10
 
 **Page Analysis** — SEO/meta audit (title/description lengths, OG/Twitter cards, H1s, missing alts) · performance metrics (TTFB, FCP, LCP, CLS, resource breakdown) · localStorage/sessionStorage/cookie viewer with delete/clear · framework & tech detector
 
+**Favorites** — click the ☆ on any tool to pin it to a Favorites group at the top of the sidebar (saved locally).
+
 ## Install (development)
 
 1. Open `chrome://extensions`

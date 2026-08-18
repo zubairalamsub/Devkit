@@ -34,7 +34,7 @@ Element ruler, font inspector, outline overlay, palette extractor and full-tab s
 ★ PRIVATE BY DESIGN
 Everything runs locally. No servers, no accounts, no analytics, no data collection — just three narrow permissions (activeTab, scripting, storage). DevKit only touches a page when you click a button.
 
-Dark & light themes. Searchable tool list. Keyboard shortcut: Alt+Shift+D.
+Dark & light themes. Star your most-used tools as favorites. Searchable tool list. Keyboard shortcut: Alt+Shift+D.
 
 ## Privacy practices tab — paste these exactly
 

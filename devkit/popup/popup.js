@@ -105,7 +105,49 @@ const DK = (() => {
 
   // ---------- UI ----------
   let activeId = null;
+  let favGroup = null;
+  let favorites = new Set();
   const rendered = new Set();
+
+  function toggleFavorite(id) {
+    if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+    store('favorites', [...favorites]);
+    document.querySelectorAll(`.nav-item[data-tool="${id}"] .fav-star`).forEach((s) => {
+      const on = favorites.has(id);
+      s.classList.toggle('on', on);
+      s.textContent = on ? '★' : '☆';
+      s.title = on ? 'Remove from favorites' : 'Add to favorites';
+    });
+    renderFavorites();
+  }
+
+  function makeNavItem(tool) {
+    const on = favorites.has(tool.id);
+    const star = el('span', {
+      class: 'fav-star' + (on ? ' on' : ''),
+      text: on ? '★' : '☆',
+      title: on ? 'Remove from favorites' : 'Add to favorites',
+      'aria-label': 'Toggle favorite',
+      role: 'button',
+      onclick: (e) => { e.stopPropagation(); toggleFavorite(tool.id); }
+    });
+    return el('button', {
+      class: 'nav-item' + (tool.id === activeId ? ' active' : ''),
+      'data-tool': tool.id,
+      onclick: () => activate(tool.id)
+    }, [
+      el('span', { class: 'nav-name', text: tool.name }),
+      star
+    ]);
+  }
+
+  function renderFavorites() {
+    if (!favGroup) return;
+    favGroup.querySelectorAll('.nav-item').forEach((n) => n.remove());
+    const favTools = tools.filter((t) => favorites.has(t.id));
+    favGroup.classList.toggle('hidden', favTools.length === 0);
+    for (const tool of favTools) favGroup.appendChild(makeNavItem(tool));
+  }
 
   function activate(id, persist = true) {
     const tool = tools.find((t) => t.id === id) || tools[0];
@@ -126,18 +168,17 @@ const DK = (() => {
   function buildNav() {
     const nav = document.getElementById('nav');
     const content = document.getElementById('content');
+    favGroup = el('div', { class: 'nav-group hidden', id: 'fav-group' }, [el('div', { class: 'nav-group-title', text: '★ Favorites' })]);
+    nav.appendChild(favGroup);
     for (const group of groups) {
       const wrap = el('div', { class: 'nav-group' }, [el('div', { class: 'nav-group-title', text: group })]);
       for (const tool of tools.filter((t) => t.group === group)) {
-        wrap.appendChild(el('button', {
-          class: 'nav-item',
-          'data-tool': tool.id,
-          onclick: () => activate(tool.id)
-        }, [el('span', { class: 'ico', text: tool.icon || '•' }), tool.name]));
+        wrap.appendChild(makeNavItem(tool));
         content.appendChild(el('section', { class: 'tool-panel', 'data-tool': tool.id }));
       }
       nav.appendChild(wrap);
     }
+    renderFavorites();
   }
 
   function bindSearch() {
@@ -176,6 +217,7 @@ const DK = (() => {
 
   // ---------- boot ----------
   async function init() {
+    favorites = new Set((await load('favorites')) || []);
     buildNav();
     bindSearch();
     await initTheme();
