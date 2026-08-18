@@ -183,7 +183,19 @@ const DK = (() => {
 
   function bindSearch() {
     const input = document.getElementById('tool-search');
-    input.addEventListener('input', () => {
+    let selIndex = -1;
+    const visible = () => [...document.querySelectorAll('.nav-item:not(.hidden)')];
+    const clearSel = () => document.querySelectorAll('.nav-item.kbd-sel').forEach((n) => n.classList.remove('kbd-sel'));
+    function setSel(i) {
+      const items = visible();
+      clearSel();
+      if (!items.length) { selIndex = -1; return; }
+      selIndex = (i + items.length) % items.length;
+      const node = items[selIndex];
+      node.classList.add('kbd-sel');
+      node.scrollIntoView({ block: 'nearest' });
+    }
+    function applyFilter() {
       const q = input.value.trim().toLowerCase();
       document.querySelectorAll('.nav-item').forEach((b) => {
         const tool = tools.find((t) => t.id === b.dataset.tool);
@@ -191,9 +203,24 @@ const DK = (() => {
         b.classList.toggle('hidden', !hit);
       });
       document.querySelectorAll('.nav-group').forEach((g) => {
-        const anyVisible = g.querySelector('.nav-item:not(.hidden)');
-        g.classList.toggle('hidden', !anyVisible);
+        g.classList.toggle('hidden', !g.querySelector('.nav-item:not(.hidden)'));
       });
+      selIndex = -1;
+      clearSel();
+      if (q) setSel(0); // pre-highlight the top match while typing
+    }
+    input.addEventListener('input', applyFilter);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setSel(selIndex + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setSel(selIndex - 1); }
+      else if (e.key === 'Enter') {
+        e.preventDefault();
+        const items = visible();
+        const target = items[selIndex] || items[0];
+        if (target) { activate(target.dataset.tool); input.value = ''; applyFilter(); }
+      } else if (e.key === 'Escape') {
+        if (input.value) { input.value = ''; applyFilter(); } else input.blur();
+      }
     });
   }
 
@@ -223,6 +250,7 @@ const DK = (() => {
     await initTheme();
     const last = await load('lastTool');
     activate(last || tools[0].id, false);
+    document.getElementById('tool-search').focus();
   }
 
   return { IS_EXT, register, init, el, toast, copy, copyBtn, store, load, runInPage, activeTab };
