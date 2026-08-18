@@ -106,7 +106,9 @@ const DK = (() => {
   // ---------- UI ----------
   let activeId = null;
   let favGroup = null;
+  let recentGroup = null;
   let favorites = new Set();
+  let recents = [];
   const rendered = new Set();
 
   function toggleFavorite(id) {
@@ -116,37 +118,43 @@ const DK = (() => {
       const on = favorites.has(id);
       s.classList.toggle('on', on);
       s.textContent = on ? '★' : '☆';
+      s.setAttribute('aria-pressed', on ? 'true' : 'false');
       s.title = on ? 'Remove from favorites' : 'Add to favorites';
     });
     renderFavorites();
+    renderRecents();
   }
 
+  // A nav row is a plain container holding two real buttons — the tool label and
+  // the favorite toggle — so we never nest interactive controls inside a button.
   function makeNavItem(tool) {
     const on = favorites.has(tool.id);
-    const star = el('span', {
+    const label = el('button', { class: 'nav-label', onclick: () => activate(tool.id) },
+      [el('span', { class: 'nav-name', text: tool.name })]);
+    const star = el('button', {
       class: 'fav-star' + (on ? ' on' : ''),
       text: on ? '★' : '☆',
       title: on ? 'Remove from favorites' : 'Add to favorites',
-      'aria-label': 'Toggle favorite',
-      role: 'button',
+      'aria-label': (on ? 'Remove ' : 'Add ') + tool.name + (on ? ' from favorites' : ' to favorites'),
+      'aria-pressed': on ? 'true' : 'false',
       onclick: (e) => { e.stopPropagation(); toggleFavorite(tool.id); }
     });
-    return el('button', {
-      class: 'nav-item' + (tool.id === activeId ? ' active' : ''),
-      'data-tool': tool.id,
-      onclick: () => activate(tool.id)
-    }, [
-      el('span', { class: 'nav-name', text: tool.name }),
-      star
-    ]);
+    return el('div', { class: 'nav-item' + (tool.id === activeId ? ' active' : ''), 'data-tool': tool.id }, [label, star]);
   }
 
+  function renderGroup(group, toolList) {
+    group.querySelectorAll('.nav-item').forEach((n) => n.remove());
+    group.classList.toggle('hidden', toolList.length === 0);
+    for (const tool of toolList) group.appendChild(makeNavItem(tool));
+  }
   function renderFavorites() {
-    if (!favGroup) return;
-    favGroup.querySelectorAll('.nav-item').forEach((n) => n.remove());
-    const favTools = tools.filter((t) => favorites.has(t.id));
-    favGroup.classList.toggle('hidden', favTools.length === 0);
-    for (const tool of favTools) favGroup.appendChild(makeNavItem(tool));
+    if (favGroup) renderGroup(favGroup, tools.filter((t) => favorites.has(t.id)));
+  }
+  function renderRecents() {
+    if (!recentGroup) return;
+    const list = recents.filter((id) => !favorites.has(id))
+      .map((id) => tools.find((t) => t.id === id)).filter(Boolean).slice(0, 5);
+    renderGroup(recentGroup, list);
   }
 
   function activate(id, persist = true) {
@@ -162,7 +170,12 @@ const DK = (() => {
       if (tool.sub) panel.appendChild(el('p', { class: 'tool-sub', text: tool.sub }));
       try { tool.render(panel); } catch (e) { panel.appendChild(el('p', { class: 'status-err', text: 'Tool failed to load: ' + e.message })); }
     }
-    if (persist) store('lastTool', tool.id);
+    if (persist) {
+      store('lastTool', tool.id);
+      recents = [tool.id].concat(recents.filter((x) => x !== tool.id)).slice(0, 8);
+      store('recents', recents);
+      renderRecents();
+    }
   }
 
   function buildNav() {
@@ -170,6 +183,8 @@ const DK = (() => {
     const content = document.getElementById('content');
     favGroup = el('div', { class: 'nav-group hidden', id: 'fav-group' }, [el('div', { class: 'nav-group-title', text: '★ Favorites' })]);
     nav.appendChild(favGroup);
+    recentGroup = el('div', { class: 'nav-group hidden', id: 'recent-group' }, [el('div', { class: 'nav-group-title', text: 'Recent' })]);
+    nav.appendChild(recentGroup);
     for (const group of groups) {
       const wrap = el('div', { class: 'nav-group' }, [el('div', { class: 'nav-group-title', text: group })]);
       for (const tool of tools.filter((t) => t.group === group)) {
@@ -179,6 +194,7 @@ const DK = (() => {
       nav.appendChild(wrap);
     }
     renderFavorites();
+    renderRecents();
   }
 
   function bindSearch() {
@@ -245,6 +261,7 @@ const DK = (() => {
   // ---------- boot ----------
   async function init() {
     favorites = new Set((await load('favorites')) || []);
+    recents = (await load('recents')) || [];
     buildNav();
     bindSearch();
     await initTheme();
