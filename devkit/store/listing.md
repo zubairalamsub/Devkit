@@ -1,5 +1,46 @@
 # Chrome Web Store listing — copy-paste material
 
+## SEO-optimized listing — APPLY ONLY AFTER v1.1.0 IS APPROVED
+(Keyword-natural, policy-safe. Do not edit the listing while a version is "Pending review".)
+
+### Title (pick one)
+- SEO:   `DevKit – Developer Tools: JSON, JWT, Regex & More`
+- Clean: `DevKit — All-in-One Developer Tools`
+
+### Summary (max 132 chars)
+45+ developer tools in one popup: JSON formatter, JWT decoder, Base64, regex tester, QR codes, diff, color picker & more.
+
+### Description
+DevKit is an all-in-one developer tools extension: a JSON formatter, JWT decoder, Base64 encoder/decoder, regex tester, QR code generator, and color picker — plus 40 more utilities — in one fast, private popup. Stop installing a separate extension for every small task.
+
+★ CODE & DATA
+Format and validate JSON with a collapsible tree view, decode JWT tokens, encode and decode Base64 and URLs, escape HTML entities, convert number bases, convert CSV to JSON and query strings to JSON, format SQL, and preview Markdown.
+
+★ GENERATORS
+Generate UUIDs, SHA-256 and other secure hashes, strong passwords, QR codes, and realistic mock/test data — all computed locally.
+
+★ COMPARE & DIFF
+Compare text and JSON with a structural diff, compare two lists, measure text similarity, diff dates and numbers, and run a pixel-level image diff.
+
+★ DESIGN
+Convert colors between HEX, RGB and HSL, pick any pixel on screen with the eyedropper, check WCAG contrast ratios, and build box-shadows and gradients with a live preview.
+
+★ TEXT
+Test regular expressions with live match highlighting, convert case, count words and characters, sort and deduplicate lines, slugify text, and escape strings.
+
+★ PAGE TOOLS & ANALYSIS
+Measure elements with a ruler, inspect fonts, extract a page's color palette, capture screenshots, and audit any page for SEO, performance (Core Web Vitals), storage, and the frameworks it uses.
+
+★ REFERENCE & TIME
+Look up HTTP status codes and MIME types, parse User-Agent strings, convert Unix timestamps, and explain cron expressions.
+
+★ PRIVATE BY DESIGN
+DevKit runs entirely in your browser. It makes no network requests — no servers, no analytics, no accounts, and no data collection. It uses only three narrow permissions (activeTab, scripting, storage) and can touch a page only when you click a tool.
+
+Free and open source. Dark & light themes, a searchable tool list, favorites, a Recent group, and the keyboard shortcut Alt+Shift+D.
+
+---
+
 ## Name
 DevKit - All-in-One Developer Tools
 
