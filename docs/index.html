@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevKit — 45+ Developer Tools in One Private Chrome Extension</title>
+<meta name="description" content="DevKit packs 45+ developer tools into one fast Chrome extension: JSON formatter, JWT decoder, Base64, regex tester, QR codes, diff &amp; compare, color picker, page ruler, SEO &amp; performance audit. 100% private — no servers, no tracking.">
+<link rel="canonical" href="https://zubairalamsub.github.io/Devkit/">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="DevKit — 45+ Developer Tools in One Private Chrome Extension">
+<meta property="og:description" content="JSON, JWT, Base64, regex, QR codes, diffs, color &amp; page tools — all in one fast popup that runs entirely in your browser. No tracking.">
+<meta property="og:url" content="https://zubairalamsub.github.io/Devkit/">
+<meta property="og:image" content="https://zubairalamsub.github.io/Devkit/img/01-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DevKit — 45+ Developer Tools in One Chrome Extension">
+<meta name="twitter:description" content="45+ developer tools in one private popup. No servers, no tracking, open source.">
+<meta name="twitter:image" content="https://zubairalamsub.github.io/Devkit/img/01-overview.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "DevKit - All-in-One Developer Tools",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Chrome",
+  "description": "45+ developer tools in one private Chrome extension: JSON formatter, JWT decoder, Base64, regex tester, QR codes, diff & compare, color tools, page inspection and analysis.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://zubairalamsub.github.io/Devkit/"
+}
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#f5f7fb; --surface:#ffffff; --border:#e6e9f0;
+    --text:#141a26; --dim:#5b6576; --faint:#8b93a3;
+    --accent:#2f6bed; --accent-2:#7a3bf2;
+    --radius:16px; --shadow:0 10px 40px rgba(20,30,60,.12); --shadow-sm:0 2px 10px rgba(20,30,60,.08);
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'Cascadia Code','SF Mono',Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0d1016; --bg-soft:#12161f; --surface:#161c27; --border:#242c3a;
+      --text:#e9edf4; --dim:#9aa3b3; --faint:#69728244;
+      --accent:#6f9bff; --accent-2:#9a6bff;
+      --shadow:0 14px 50px rgba(0,0,0,.55); --shadow-sm:0 2px 12px rgba(0,0,0,.4);
+    }
+    :root{ --faint:#79839a; }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(12px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--border);}
+  @supports not (backdrop-filter: blur(1px)){header{background:var(--bg);}}
+  .nav{display:flex;align-items:center;gap:16px;height:64px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em;}
+  .logo{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;color:#fff;background:linear-gradient(140deg,#4b83ff,#6a5bf2);box-shadow:0 3px 10px rgba(74,108,255,.4);}
+  .nav .spacer{flex:1;}
+  .nav-links{display:flex;gap:22px;color:var(--dim);font-weight:600;font-size:14px;}
+  .nav-links a:hover{color:var(--text);}
+  @media (max-width:720px){.nav-links{display:none;}}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;padding:10px 18px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:transform .06s ease,box-shadow .15s ease,background .15s;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(47,107,237,.35);}
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-ghost{background:transparent;border-color:var(--border);color:var(--text);}
+  .btn-ghost:hover{background:var(--bg-soft);}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:80px 0 40px;background:radial-gradient(1200px 500px at 50% -120px,rgba(122,59,242,.16),transparent 60%),radial-gradient(900px 400px at 80% -60px,rgba(47,107,237,.16),transparent 55%);}
+  .badge-pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--dim);background:var(--surface);border:1px solid var(--border);padding:6px 14px;border-radius:999px;box-shadow:var(--shadow-sm);}
+  .hero h1{font-size:clamp(32px,5.4vw,56px);line-height:1.08;letter-spacing:-.03em;margin:22px auto 0;max-width:16ch;font-weight:820;}
+  .hero h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.sub{font-size:clamp(16px,2.2vw,20px);color:var(--dim);max-width:60ch;margin:20px auto 0;}
+  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:30px 0 8px;}
+  .btn-lg{padding:14px 26px;font-size:16px;border-radius:12px;}
+  .micro{font-size:13px;color:var(--faint);margin-top:6px;}
+  .hero-shot{margin:44px auto 0;max-width:960px;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);}
+
+  /* Stats strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:56px 0;}
+  @media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr);}}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .n{font-size:26px;font-weight:800;letter-spacing:-.02em;}
+  .stat .l{font-size:13px;color:var(--dim);margin-top:2px;}
+
+  /* Sections */
+  section{padding:56px 0;}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 40px;}
+  .sec-head h2{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.02em;margin:0 0 10px;font-weight:800;}
+  .sec-head p{color:var(--dim);margin:0;font-size:16px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:700;color:var(--accent);}
+
+  /* Feature grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow-sm);transition:transform .12s ease,border-color .12s;}
+  .card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 40%,var(--border));}
+  .card h3{margin:0 0 8px;font-size:17px;letter-spacing:-.01em;}
+  .card p{margin:0;color:var(--dim);font-size:14px;}
+  .card .k{display:inline-block;font:600 11px var(--mono);color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);padding:2px 8px;border-radius:6px;margin-bottom:12px;}
+
+  /* Showcase */
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:720px){.shots{grid-template-columns:1fr;}}
+  .shot{border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);overflow:hidden;}
+
+  /* Privacy band */
+  .band{background:linear-gradient(135deg,#2f6bed,#7a3bf2);color:#fff;border-radius:24px;padding:48px 40px;text-align:center;box-shadow:var(--shadow);}
+  .band h2{font-size:clamp(24px,3.4vw,34px);margin:0 0 12px;letter-spacing:-.02em;}
+  .band p{margin:0 auto;max-width:60ch;opacity:.92;font-size:16px;}
+  .band .pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+  .band .pills span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px;}
+
+  /* Footer */
+  footer{border-top:1px solid var(--border);padding:36px 0;color:var(--dim);font-size:14px;}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .foot a{color:var(--dim);font-weight:600;}
+  .foot a:hover{color:var(--text);}
+  .foot .links{display:flex;gap:20px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="logo">{&nbsp;}</span> DevKit</a>
+    <div class="spacer"></div>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#privacy">Privacy</a>
+      <a href="https://github.com/zubairalamsub/Devkit" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/bkchkmepmeccpehnfgnecmdobfhejpoc" target="_blank" rel="noopener">Add to Chrome</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge-pill">🔒 100% private · runs entirely in your browser</span>
+      <h1>45+ developer tools. <span class="grad">One extension.</span> Zero tracking.</h1>
+      <p class="sub">JSON, JWT, Base64, regex, QR codes, diffs, color &amp; page-inspection tools — all in one fast popup. No servers, no accounts, no data collection.</p>
+      <div class="cta">
+        <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/bkchkmepmeccpehnfgnecmdobfhejpoc" target="_blank" rel="noopener">➕ Add to Chrome — Free</a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/zubairalamsub/Devkit" target="_blank" rel="noopener">★ View on GitHub</a>
+      </div>
+      <div class="micro">Free &amp; open source (MIT) · Manifest V3 · Just 3 narrow permissions</div>
+      <img class="hero-shot" src="img/01-overview.png" alt="DevKit popup showing the JSON formatter with a collapsible tree view and the tool sidebar" width="960" height="600" loading="eager">
+    </div>
+  </section>
+
+  <div class="wrap">
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat"><div class="n">45+</div><div class="l">developer tools</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">data collected</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">narrow permissions</div></div>
+      <div class="stat"><div class="n">MIT</div><div class="l">open source</div></div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Everything in one place</div>
+        <h2>One popup. The whole toolkit.</h2>
+        <p>Stop juggling a dozen single-purpose extensions. DevKit groups every tool you reach for into a searchable, keyboard-friendly sidebar.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><span class="k">Code &amp; Data</span><h3>Format &amp; convert</h3><p>JSON formatter with tree view, Base64, URL &amp; HTML-entity encoders, JWT decoder, number-base, CSV/JSON &amp; query-string converters, SQL formatter, Markdown preview.</p></div>
+        <div class="card"><span class="k">Generators</span><h3>Create instantly</h3><p>UUIDs, SHA hashes, secure passwords, QR codes, mock data and lorem ipsum — generated locally with the Web Crypto API.</p></div>
+        <div class="card"><span class="k">Compare</span><h3>Diff anything</h3><p>Text diff, structural JSON diff, list compare, text similarity, date diff, number diff, and a pixel-level image diff.</p></div>
+        <div class="card"><span class="k">Design</span><h3>Colors &amp; CSS</h3><p>HEX/RGB/HSL converter, screen eyedropper, WCAG contrast checker, px⇄rem, and live box-shadow &amp; gradient builders.</p></div>
+        <div class="card"><span class="k">Text</span><h3>Wrangle text</h3><p>Regex tester, case converter, word counter, line tools (sort/dedupe/shuffle), slugify and a JS/JSON string escaper.</p></div>
+        <div class="card"><span class="k">Page Tools</span><h3>Inspect any page</h3><p>Element ruler, font inspector, outline overlay, color-palette extractor and full-tab screenshots — on demand.</p></div>
+        <div class="card"><span class="k">Analysis</span><h3>Audit on demand</h3><p>SEO checks, performance metrics (Core Web Vitals), a storage viewer and framework/library detection.</p></div>
+        <div class="card"><span class="k">Reference &amp; Time</span><h3>Look it up</h3><p>Searchable HTTP status codes, MIME types &amp; User-Agent parser, plus a timestamp converter and cron explainer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section id="screenshots" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Take a look</div>
+        <h2>Fast, focused, and easy on the eyes</h2>
+        <p>Dark and light themes, a searchable tool list, and a Favorites group for the tools you use most.</p>
+      </div>
+      <div class="shots">
+        <img class="shot" src="img/02-qrcode.png" alt="DevKit QR code generator creating a scannable QR from a URL" width="640" height="400" loading="lazy">
+        <img class="shot" src="img/03-jsondiff.png" alt="DevKit JSON diff highlighting added, removed and changed values between two documents" width="640" height="400" loading="lazy">
+        <img class="shot" src="img/04-color.png" alt="DevKit color tools with HEX/RGB/HSL conversion and a WCAG contrast checker" width="640" height="400" loading="lazy">
+        <img class="shot" src="img/01-overview.png" alt="DevKit JSON formatter with the favorites group in the sidebar" width="640" height="400" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="band">
+        <h2>Private by design</h2>
+        <p>DevKit makes zero network requests. Everything runs locally in your browser — there are no servers, no analytics, no accounts, and nothing is ever uploaded. It can only touch a page when you click a tool.</p>
+        <div class="pills">
+          <span>No data collection</span>
+          <span>No tracking</span>
+          <span>No account</span>
+          <span>No ads</span>
+          <span>Open source</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section style="text-align:center;padding-top:8px;">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:22px;">
+        <h2>Add DevKit to Chrome</h2>
+        <p>Free, forever. Your new developer toolbox is one click away.</p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/bkchkmepmeccpehnfgnecmdobfhejpoc" target="_blank" rel="noopener">➕ Add to Chrome — Free</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Zubair Alam · DevKit</div>
+    <div class="links">
+      <a href="https://chromewebstore.google.com/detail/bkchkmepmeccpehnfgnecmdobfhejpoc" target="_blank" rel="noopener">Chrome Web Store</a>
+      <a href="https://github.com/zubairalamsub/Devkit" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/zubairalamsub/Devkit/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
