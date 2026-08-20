@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "DevKit - All-in-One Developer Tools",
   "version": "1.1.0",
-  "description": "45+ developer tools in one: JSON/JWT/Base64, regex, QR codes, diff & compare, color picker, page ruler, SEO & performance audit.",
+  "description": "45+ developer utilities in one fast, private popup — no servers, no tracking, no clutter.",
   "homepage_url": "https://zubairalamsub.github.io/Devkit/",
   "minimum_chrome_version": "102",
   "permissions": ["activeTab", "scripting", "storage"],

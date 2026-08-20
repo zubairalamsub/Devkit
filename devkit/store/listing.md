@@ -1,81 +1,37 @@
 # Chrome Web Store listing — copy-paste material
 
-## SEO-optimized listing — APPLY ONLY AFTER v1.1.0 IS APPROVED
-(Keyword-natural, policy-safe. Do not edit the listing while a version is "Pending review".)
-
-### Title (pick one)
-- SEO:   `DevKit – Developer Tools: JSON, JWT, Regex & More`
-- Clean: `DevKit — All-in-One Developer Tools`
-
-### Summary (max 132 chars)
-45+ developer tools in one popup: JSON formatter, JWT decoder, Base64, regex tester, QR codes, diff, color picker & more.
-
-### Description
-DevKit is an all-in-one developer tools extension: a JSON formatter, JWT decoder, Base64 encoder/decoder, regex tester, QR code generator, and color picker — plus 40 more utilities — in one fast, private popup. Stop installing a separate extension for every small task.
-
-★ CODE & DATA
-Format and validate JSON with a collapsible tree view, decode JWT tokens, encode and decode Base64 and URLs, escape HTML entities, convert number bases, convert CSV to JSON and query strings to JSON, format SQL, and preview Markdown.
-
-★ GENERATORS
-Generate UUIDs, SHA-256 and other secure hashes, strong passwords, QR codes, and realistic mock/test data — all computed locally.
-
-★ COMPARE & DIFF
-Compare text and JSON with a structural diff, compare two lists, measure text similarity, diff dates and numbers, and run a pixel-level image diff.
-
-★ DESIGN
-Convert colors between HEX, RGB and HSL, pick any pixel on screen with the eyedropper, check WCAG contrast ratios, and build box-shadows and gradients with a live preview.
-
-★ TEXT
-Test regular expressions with live match highlighting, convert case, count words and characters, sort and deduplicate lines, slugify text, and escape strings.
-
-★ PAGE TOOLS & ANALYSIS
-Measure elements with a ruler, inspect fonts, extract a page's color palette, capture screenshots, and audit any page for SEO, performance (Core Web Vitals), storage, and the frameworks it uses.
-
-★ REFERENCE & TIME
-Look up HTTP status codes and MIME types, parse User-Agent strings, convert Unix timestamps, and explain cron expressions.
-
-★ PRIVATE BY DESIGN
-DevKit runs entirely in your browser. It makes no network requests — no servers, no analytics, no accounts, and no data collection. It uses only three narrow permissions (activeTab, scripting, storage) and can touch a page only when you click a tool.
-
-Free and open source. Dark & light themes, a searchable tool list, favorites, a Recent group, and the keyboard shortcut Alt+Shift+D.
-
----
+> ⚠️ Rejected twice for keyword spam. The copy below is deliberately plain marketing
+> prose with only a handful of feature terms and NO comma-separated tool lists.
+> Do not reintroduce keyword lists (e.g. "JSON, JWT, Base64, regex, …") anywhere in
+> the summary or description — that phrasing is exactly what the spam filter flags.
 
 ## Name
 DevKit - All-in-One Developer Tools
 
-## Summary (max 132 chars)
-45+ dev tools in one: JSON, JWT, Base64, regex, QR codes, diff & compare, color picker, page ruler, SEO & performance audit.
-
 ## Category
 Developer Tools
 
+## Summary (max 132 chars)
+45+ developer utilities in one fast, private popup — no servers, no tracking, no clutter.
+
 ## Description
 
-Stop juggling a dozen single-purpose extensions. DevKit packs 45+ developer tools into one fast, private popup.
+DevKit brings the small utilities developers reach for all day into one fast popup, so you stop installing a separate extension for every little task.
 
-★ CODE & DATA
-JSON formatter with tree view, Base64, URL and HTML-entity encoders, JWT decoder, number-base converter, CSV/JSON and query-string converters, SQL formatter, and Markdown preview.
+Open it, search or pick a tool, and go. Everything lives in a searchable sidebar with favorites and a recent list, so what you need is always a click away.
 
-★ GENERATORS
-UUIDs, SHA hashes, secure passwords, QR codes, mock data, and lorem ipsum.
+What you can do with DevKit:
+• Format, validate, and explore your data, and decode tokens.
+• Generate IDs, hashes, secure passwords, and QR codes — all on your own machine.
+• Compare two things — text, data, or images — and see exactly what changed.
+• Work with color: convert formats, pick any pixel on screen, and check contrast.
+• Clean up and reshape text.
+• Inspect the page you're on and audit it for SEO and performance.
 
-★ DESIGN
-Color converter, screen eyedropper, WCAG contrast checker, px/rem calculator, and box-shadow & gradient builders — all with live preview.
+Private by design
+DevKit runs entirely in your browser. It makes no network requests — no servers, no analytics, no accounts, and no data collection. It asks for only three narrow permissions (activeTab, scripting, storage), and it acts on a page only when you click a tool.
 
-★ TEXT & COMPARE
-Regex tester, case converter, word counter, line tools, slugify and string escaper — plus a full compare suite: text diff, JSON diff, list compare, text similarity, date diff, number diff and image diff.
-
-★ TIME & REFERENCE
-Timestamp converter, cron explainer, and quick references for HTTP status codes, MIME types and User-Agent strings.
-
-★ ON-PAGE TOOLS & ANALYSIS
-Element ruler, font inspector, outline overlay, palette extractor and full-tab screenshots. Plus on-demand page analysis: SEO checks, performance metrics, a storage viewer and framework detection.
-
-★ PRIVATE BY DESIGN
-Everything runs locally. No servers, no accounts, no analytics, no data collection — just three narrow permissions (activeTab, scripting, storage). DevKit only touches a page when you click a button.
-
-Dark & light themes. Star your most-used tools as favorites. Searchable tool list. Keyboard shortcut: Alt+Shift+D.
+Free and open source, with dark and light themes and a keyboard shortcut (Alt+Shift+D).
 
 ## Privacy practices tab — paste these exactly
 
