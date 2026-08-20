@@ -21,7 +21,7 @@ DevKit brings the small utilities developers reach for all day into one fast pop
 Open it, search or pick a tool, and go. Everything lives in a searchable sidebar with favorites and a recent list, so what you need is always a click away.
 
 What you can do with DevKit:
-• Format, validate, and explore your data, and decode tokens.
+• Format, validate, and explore JSON and other data, and decode tokens.
 • Generate IDs, hashes, secure passwords, and QR codes — all on your own machine.
 • Compare two things — text, data, or images — and see exactly what changed.
 • Work with color: convert formats, pick any pixel on screen, and check contrast.
