@@ -140,6 +140,53 @@ Free: https://zubairalamsub.github.io/Devkit/
 
 ---
 
+## 7) LinkedIn
+
+> LinkedIn suppresses posts with external links in the body. Put the store link in the
+> FIRST COMMENT instead, and say "link in comments" in the post. Post, then immediately
+> add the comment. 3–5 hashtags max.
+
+**Main version:**
+```
+I got tired of installing a different Chrome extension for every small dev task.
+
+JSON formatter here. JWT decoder there. Another for Base64, another for a color
+picker... each one more clutter, and each one asking for permissions.
+
+So I built DevKit — 45+ developer tools in one popup. 🧰
+
+Format and inspect data, generate IDs/hashes/QR codes, diff text and JSON, work
+with color, and audit any page for SEO and performance — without leaving your tab.
+
+The part I care about most: it runs 100% in your browser. No servers, no tracking,
+no account, no data collection — just three narrow permissions. It's also free and
+open source (MIT).
+
+It's live on the Chrome Web Store now (link in the comments).
+
+If you try it, I'd love to know: which tool should I add next?
+
+#webdev #developertools #chromeextension #opensource #buildinpublic
+```
+
+**First comment (post right after):**
+```
+Chrome Web Store: https://chromewebstore.google.com/detail/bkchkmepmeccpehnfgnecmdobfhejpoc
+Source (open to PRs & issues): https://github.com/zubairalamsub/Devkit
+```
+
+**Short version:**
+```
+Shipped a side project: DevKit — 45+ developer tools in one Chrome extension. 🧰
+
+JSON, tokens, diffs, QR codes, color, page audits — all in one popup that runs
+100% in your browser. No servers, no tracking. Free & open source.
+
+Live on the Chrome Web Store (link in comments). What tool should I add next?
+
+#webdev #developertools #chromeextension #opensource
+```
+
 ## 6) Get listed in "best extensions" roundups
 Search for recent articles like "best Chrome extensions for developers <year>" and
 email/DM the authors a short, no-pressure note with the store link, the one-line
